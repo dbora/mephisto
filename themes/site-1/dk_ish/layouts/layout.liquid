@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{{ '/feed/atom.xml' | assign_to: 'global_feed' }}
+{{ '/feed/all_comments.xml' | assign_to: 'global_comments_feed' }}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  {{ site.title }} 
+  {% if site.current_section %}
+    - {{ site.current_section.name }}
+  {% endif %}
+  {% if article %}
+    - {{ article.title }}
+  {% endif %}
+</title>
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }} feed" href="{{ global_feed }}"/>
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }} comments feed" href="{{ global_comments_feed }}"/>
+{{ 'base' | stylesheet }}
+{{ 'app' | javascript }}
+<!--[if IE]>
+{{ 'base_ie' | stylesheet }}
+<![endif]-->
+</head>
+
+<body class="fixed orange">
+<script type="text/javascript">loadPreferences()</script> 
+
+<div id="wrapper">
+
+<div id="header" class="clearfix">
+<div id="title" class="clearfix">
+  <h1><a href="/">{{ site.title }}</a></h1>
+</div>
+
+<div id="search" class="boxy short">
+  <h3>Search</h3>
+  <form method="get" action="/search">
+    <fieldset>
+      <input class="text" type="text" id="q" value="" name="q"/>
+    </fieldset>
+  </form>
+</div> 
+
+
+
+<h2>Sections</h2>
+<ul id="menu">
+{% for section in site.sections %}
+  {% if section.articles_count > 0 %}
+  {% if section.is_home  %}
+    <li{% if section.current %} class="selected"{% endif %}>{{ section | link_to_section }}</li>
+  {% else %}
+    {% if section.is_paged  %}
+    <li{% if section.current %} class="selected"{% endif %}>{{ section | link_to_section }}</li>
+    {% endif %}
+  {% endif %}
+  {% endif %}
+{% endfor %}
+</ul>
+</div>
+
+<div id="contentwrapper" class="clearfix">
+
+<div id="content">
+  
+  <div id="innerwrapper">
+
+<!-- div class="article">
+  <div class="body">
+  <h2>Skittlish Tips'n'Tricks</h2>
+  <ul>
+    <li>Change the classes for the body tag to set your default site style. also change these in the app.js file (line 66).</li>
+    <li>Remove the scripts and the #options div if you don't want the option switcher.</li>
+    <li>The top menu shows the home section and the sections that are not blogs.</li>
+    <li>Email me at <a href="mailto:evil@che.lu">evil@che.lu</a> if you have any questions.</li>
+    <li>Happy hacking!</li>
+  </ul>
+  </div>
+</div -->
+
+{{ content_for_layout }}
+
+  </div>
+
+</div>
+
+<div id="sidebar">
+
+<!-- div class="boxy short">
+<h3>boxy short</h3>
+
+<p>You can have, boxes with a short, tall or no background shade, just change the class of the containing div.</p>
+
+<p>Have boxes with smaller text with the class "minor". See the "Recent" boxy below.</p>
+
+</div -->
+
+
+<div class="boxy tall minor">
+  <h3>Recent</h3>
+
+<dl>
+<dt>Articles <a class="feed" href="{{ global_feed }}"><span>feed</span></a></dt>
+<dd>
+  <ul>
+  {% for article in site.latest_articles %}
+    <li>{{ article | link_to_article }} <em>({{ article.published_at | format_date: 'stub', true }})</em></li>
+  {% endfor %}
+  </ul>
+</dd>
+
+<dt>Comments <a class="feed" href="{{ global_comments_feed }}"><span>feed</span></a></dt>
+<dd>
+  <ul>
+  {% for comment in site.latest_comments %}
+    <li>{{ comment.author_link }} on <a href="{{ comment.url }}#comment-{{ comment.id }}">{{ comment.title }}</a></li>
+  {% endfor %}
+  </ul>
+</dd>
+</dl>
+</div>
+ 
+ {% if site.blog_sections.size > 1 %}
+<div class="boxy short">
+<h3>Categories</h3>
+<ul class="sections">
+{% for section in site.blog_sections %}
+  {% if section.articles_count > 0 %}
+  {% unless section.is_home %}
+  <li>{{ section | link_to_section }} ({{ section.articles_count }})</li>
+  {% endunless %}
+  {% endif %}
+{% endfor %}
+</ul>
+</div>
+
+{% endif %}
+          
+<div class="boxy short">
+  <h3>Flickr</h3>
+
+	<!-- Start of Flickr Badge -->
+	<style type="text/css">
+	.zg_div {margin:0px 5px 5px 50px; width:117px;}
+	.zg_div_inner { color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+	.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+	</style>
+	<script type="text/javascript">
+	zg_insert_badge = function() {
+	var zg_bg_color = 'ffffff';
+	var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=26152118%40N07';
+	document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+	if (document.getElementById) document.write('<div id="zg_whatlink"><\/div>');
+	}
+	zg_toggleWhat = function() {
+	document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+	document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+	return false;
+	}
+	</script>
+	<div class="zg_div"><div class="zg_div_inner"><br>
+	<script type="text/javascript">zg_insert_badge();</script>
+	<div id="zg_whatdiv">This is a Flickr badge showing public photos and videos from <a href="http://www.flickr.com/photos/26152118@N07">Cement Horses</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+	<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+	</div>
+	</div>
+	<!-- End of Flickr Badge -->
+</div>
+
+<div class="boxy short">
+  <h3>HypeM</h3>
+  <div id="hypem-widget"></div><script type="text/javascript" src="http://hypem.com/widget/v2/loved/cementhorses/10/hype.js?bcol=f79910&tcol=ffffff&lcol=ffffff"></script>
+</div>
+ 
+<div class="boxy short">
+  <h3>Archives</h3>
+  <!-- p>This would be much nicer with jamis' month_drop thingy.</p -->
+  {{ '' | section | months | assign_to: 'home_section' }}
+  <ul>
+  {% for month in home_section.months %}
+    {{ home_section | monthly_articles: month | size | assign_to: 'articles_count' }}
+    {% if articles_count > 0 %}
+    <li>{{ home_section | link_to_month: month }} ({{ articles_count }})</li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</div>
+
+
+{% unless site.tags == empty %}
+<div class="boxy short">
+  <h3>tags: </h3>
+  <ul>
+  {% for tag in site.tags %} 
+    <li>{{ tag | link_to_tag }}</li>
+  {% endfor %}
+  </ul>
+</div>
+
+{% endunless %} 
+<!-- div class="boxy tall">
+<h3>boxy tall</h3>
+<p>When using a tall box, make sure it's got plenty of content or that it's immediately followed by a short boxy. It might look a bit chopped off otherwise.</p>
+<dl>
+  <dt>thing 1</dt>
+  <dd><a href="#">value 1</a></dd>
+  <dd><a href="#">value 2</a></dd>
+  <dd><a href="#">value 3</a></dd>
+  <dd><a href="#">value 4</a></dd>
+  <dd><a href="#">value 5</a></dd>
+  <dd><a href="#">value 6</a></dd>
+  <dd><a href="#">value 6</a></dd>
+
+  <dt>thing 1</dt>
+  <dd><a href="#">value 1</a></dd>
+  <dd><a href="#">value 2</a></dd>
+  <dd><a href="#">value 3</a></dd>
+  <dd>value 4</dd>
+  <dd>value 5</dd>
+  <dd><a href="#">value 6</a></dd>
+  <dd><a href="#">value 6</a></dd>
+
+</dl>
+</div -->
+
+</div>
+
+</div>
+
+<!--
+<div id="options">
+  <h2>Options:</h2>
+  <h3>Size</h3>
+  <ul id="option_size">
+    <li id="option_size_fixed"   class="fixed" ><a><span>fixed </span></a></li>
+    <li id="option_size_fluid"   class="fluid" ><a><span>fluid </span></a></li>
+  </ul>
+  <h3>Colors</h3>
+  <ul id="option_color">
+    <li id="option_color_orange" class="orange"><a><span>orange</span></a></li>
+    <li id="option_color_blue"   class="blue"  ><a><span>blue  </span></a></li>
+    <li id="option_color_green"  class="green" ><a><span>green </span></a></li>
+    <li id="option_color_pink"   class="pink"  ><a><span>pink  </span></a></li>
+    <li id="option_color_cyan"   class="cyan"  ><a><span>cyan  </span></a></li>
+    <li id="option_color_red"    class="red"   ><a><span>red   </span></a></li>
+    <li id="option_color_violet" class="violet"><a><span>violet</span></a></li>
+  </ul>
+</div>
+-->
+
+<div id="footer">
+<div class="footer-logo">
+	<a href="http://www.designkitchen.com" target="designkitchen.com"><img src="/images/logo.png"></a>
+</div>
+
+<div class="footer-copy">
+
+<p>Copyright &copy; 2008, <a href="http://www.designkitchen.com" target="designkitchen.com">Designkitchen</a>. Valid <a href="http://validator.w3.org/check/referer">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>.</p>
+<p>Using <a href="http://evil.che.lu/projects/skittlish">skittlish</a> on <a href="http://publishwithimpunity.com/">mephisto</a>.</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

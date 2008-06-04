@@ -1,0 +1,92 @@
+8
+
+dir
+38
+http://evilchelu.googlecode.com/svn/skittlish/trunk
+http://evilchelu.googlecode.com/svn
+
+
+
+2008-02-09T22:19:32.194236Z
+38
+mental
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+173daf5c-542f-0410-bd52-dbfbf314b74d
+
+layouts
+dir
+
+preview.png
+file
+
+
+
+
+2008-04-28T15:53:15.000000Z
+93b1685419c74eb7f079a3e0117435df
+2007-05-12T22:42:01.704332Z
+12
+mental
+has-props
+
+images
+dir
+
+CHANGELOG
+file
+
+
+
+
+2008-04-28T15:53:15.000000Z
+0dac08effcd1e8f5b9e4c716c7bf715a
+2007-05-12T22:42:01.704332Z
+12
+mental
+
+javascripts
+dir
+
+about.yml
+file
+
+
+
+
+2008-04-28T15:53:15.000000Z
+da2b5bee0ee646ac0a8d4ed8dfd355b8
+2007-05-12T22:42:01.704332Z
+12
+mental
+
+stylesheets
+dir
+
+README
+file
+
+
+
+
+2008-04-28T15:53:15.000000Z
+e59b18ad6be104205d6e7828f157ed4c
+2008-02-09T22:19:32.194236Z
+38
+mental
+
+templates
+dir
+

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/12/skittlish/trunk/templates
+END
+error.liquid
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/12/skittlish/trunk/templates/error.liquid
+END
+tag.liquid
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/12/skittlish/trunk/templates/tag.liquid
+END
+archive.liquid
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/12/skittlish/trunk/templates/archive.liquid
+END
+single.liquid
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/12/skittlish/trunk/templates/single.liquid
+END
+_article.liquid
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/12/skittlish/trunk/templates/_article.liquid
+END
+section.liquid
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/12/skittlish/trunk/templates/section.liquid
+END
+_short_articles.liquid
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/12/skittlish/trunk/templates/_short_articles.liquid
+END
+search.liquid
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/12/skittlish/trunk/templates/search.liquid
+END
